@@ -1,0 +1,54 @@
+    md-content {
+      background-color: #01579b;
+      color: white;
+      font-weight: 400;
+      height:100%;
+      padding:20px;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      margin-left: 3%;
+      margin-right: 3%;
+      min-height: 400px;
+      text-align: center
+    }
+
+    md-card {
+      color: #01579b;
+      text-align: center;
+    }
+
+    md-dialog-content{
+      color: black;
+    }
+
+
+md-tab-item span {
+  color: white ;
+}
+
+ #search-input {
+  color: white;
+ }
+
+ #search-input #placeholder {
+  color: white;
+ }
+
+ #search-input-container label{
+  color: white;
+ }
+
+ #search-input-container input {
+  border-bottom:1px solid white;
+ }
+
+
+.residents-container {
+  border-bottom: solid white 2px;
+  text-align: left;
+}
+
+.residents-container:hover {
+  background-color: #B0171F;
+  cursor: pointer;
+}

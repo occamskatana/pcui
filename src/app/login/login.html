@@ -1,0 +1,28 @@
+<div class="baller-form-container">
+  
+  <h2>Welcome to the future of TP<small>Please log in here.</small></h2>
+  
+  <form class="baller-form">
+    
+    <div class="baller-group">      
+      <input type="text" ng-model="user.email" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Email</label>
+    </div>
+      
+    <div class="baller-group">      
+      <input type="password" ng-model="user.password" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Password</label>
+    </div>
+    
+  </form>
+
+  <md-button class="md-raised md-primary" ng-click="login()">Login</md-button>
+
+
+
+  
+</div>

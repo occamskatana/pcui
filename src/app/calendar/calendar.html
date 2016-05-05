@@ -1,0 +1,16 @@
+
+  <md-content class="calendar-view" ng-controller="CalendarController">
+    <div layout="row">
+      <div flex="25">
+      <md-button class="md-raised" ng-click="addEvent()">Add Event</md-button>
+      <div class="events" ng-repeat="event in events | orderBy:index:true">
+        {{event.title}}{{event.start | date:short}}
+      </div>
+    
+      </div>
+      <div flex="75" ui-calendar="uiConfig.calendar" ng-model="events">
+
+      </div>
+    </div>
+    </md-content>
+ 
