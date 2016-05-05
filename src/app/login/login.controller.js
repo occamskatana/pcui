@@ -5,34 +5,24 @@
 		.module('pcui')
 		.controller('LoginCtrl',  LoginCtrl)
 
-	function LoginCtrl(UserSession, $scope, $state) {
+	function LoginCtrl(UserSession, $scope, $state, Auth) {
 
 		$scope.user = {}
 
-
-
-		var login = function(user){
-			var user_session = new UserSession({user: user})
-			user_session.$save(
-				function(data){
-					window.localStorage['userId'] = data.user.id;
-					window.localStorage['userName'] = data.user.username;
-					window.localStorage['name'] = data.user.first_name + ' ' + data.user.last_name
-					$state.go('home');
-				},
-				function(err){
-					var error;
-					if(err["data"]){
-						error = err["data"]["error"]
-					}
-					alert(error);
-				}
-			)
-		}
-
 		$scope.login = function(){
-			login($scope.user)
+			Auth.login($scope.user).then(function(user){
+				window.localStorage.user = $scope.user
+			})
 		}
+
+		$scope.$on('devise:login', function(event, currentUser){
+			
+		});
+
+		$scope.$on('devise:new-session', function(event, currentUser){
+			console.log(event, currentUser)
+			$state.go('home')
+		})
 
 
 	}
