@@ -6,9 +6,17 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, ResidentService, $firebaseArray, Auth, Users) {
+  function MainController($scope, ResidentService, Auth) {
     
-    console.log(Users.currentUser())
+    Auth.currentUser().then(function(user){
+    	$scope.userEmail = user.email
+    });
+
+    ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
+    	$scope.residents = response;
+    });
+    
+
 
   }
 })();

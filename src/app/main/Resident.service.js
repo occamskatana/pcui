@@ -5,17 +5,7 @@
 		.module('pcui')
 		.factory('ResidentService', ResidentService)
 
-		function ResidentService($firebaseArray){
-			
-			var ref = new Firebase("https://sp2.firebaseio.com/residents")
-
-			
-			var all = $firebaseArray(ref);
-			
-			var service = {
-				all: all
-			}
-			
-			return service
+		function ResidentService($resource){
+			return $resource('http://localhost:3000/api/v1/users/:user_id/residents', {user_id: '@user_id'})
 		}
 })();

@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, AuthProvider) {
+  function config($logProvider, toastrConfig, AuthProvider, $httpProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -18,6 +18,7 @@
     toastrConfig.progressBar = true;
 
     AuthProvider.loginPath('http://localhost:3000/users/sign_in.json');
+    $httpProvider.defaults.withCredentials = true;
   }
 
 

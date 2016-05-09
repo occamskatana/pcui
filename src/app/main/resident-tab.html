@@ -1,6 +1,6 @@
 <md-content class="md-padding" ng-controller="MainController">
 <h1 class="md-display-2">Current Residents</h1>
-<h3 class="md-headline">Welcome, {{name}}</h3>
+<h3 class="md-headline">Welcome, {{userEmail}}</h3>
   <md-input-container id="search-input-container">
     <input type="text" id="search-input" ng-model="searchText">
     <span class="highlight"></span>
@@ -10,7 +10,7 @@
   
   <div class="residents-container" layout="row" ng-repeat="resident in residents | filter:searchText" ng-click="showAdvanced($event)">
   	<div flex="25">
-  		<p>{{resident.name}}</p>
+  		<p>{{resident.first_name + ' ' + resident.last_name}}</p>
   	</div>
   	<div flex="25">
 			<p>Phase: {{resident.phase}}</p>
