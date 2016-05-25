@@ -11,7 +11,7 @@
 
 		$scope.login = function(){
 			Auth.login($scope.user).then(function(user){
-				console.log(user, "This is login function console")
+				console.log(user)
 			})
 		}
 
