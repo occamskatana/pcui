@@ -3,14 +3,23 @@
 		.module('pcui')
 		.controller('CalendarController', CalendarController)
 
-	function CalendarController($scope, $firebaseArray){
-		 var ref = new Firebase("https://e-tech.firebaseio.com/users/bdsimmons/events");
+	function CalendarController($scope, $firebaseArray, ResidentService, uiCalendarConfig){
+		 
 
+      
+    $scope.events = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/1/calendar'))
     
-    $scope.events = $firebaseArray(ref)
-  
+    console.log(uiCalendarConfig)
 
-    $scope.alertOnDrop = function(event, delta, revertFunc) {
+
+
+    ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
+      $scope.residents = response
+      console.log($scope.residents)
+    })
+
+
+    $scope.updateOnDrop = function(event, delta, revertFunc) {
      array = $scope.events
      record = array.$getRecord(event.$id)
      record.start = event._start.valueOf()
@@ -20,7 +29,7 @@
 
     };
 
-    $scope.events.$loaded(function(){
+  
 
       $scope.uiConfig = {
         calendar:{
@@ -32,12 +41,24 @@
           },
           events: $scope.events,
           // dayClick: $scope.alertEventOnClick,
-          eventDrop: $scope.alertOnDrop,
+          eventDrop: $scope.updateOnDrop,
           // eventResize: $scope.alertOnResize
         }
-      };
+     }
 
-    })
+ $scope.changeCalendar = function(id) {
+      console.log('before change calendar', $scope.uiConfig.calendar)
+      $scope.uiConfig.calendar.events = null;
+      console.log('after change calendar', $scope.uiConfig.calendar)
+
+      ref = new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/calendar');
+      
+      $scope.uiConfig.calendar.events = {
+        events: $firebaseArray(ref)
+      }
+
+    }
+   
    
 
     // $scope.events.$add({
