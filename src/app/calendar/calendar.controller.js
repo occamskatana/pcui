@@ -9,13 +9,13 @@
       
     $scope.events = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/1/calendar'))
     
-    console.log(uiCalendarConfig)
+    
 
 
 
     ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
       $scope.residents = response
-      console.log($scope.residents)
+      
     })
 
 
@@ -26,17 +26,20 @@
      record.end = event._end.valueOf()
 
      array.$save(record)
-     console.log($scope.uiCalendarConfig.calendar)
-
+     
+     console.log(uiCalendarConfig.calendars.myCalendar.fullCalendar())
     };
 
-    $scope.resizeDrop = function(event, delta, revertFunc) {
+    $scope.resizeDrop = function(event, jsEvent, ui, view, rawr, rawr1) {
+     
      array = $scope.uiConfig.calendar.events.events
      record = array.$getRecord(event.$id)
      record.start = event._start.valueOf()
      record.end = event._end.valueOf()
 
-     array.$save(record)
+     array.$save(record);
+     console.log(uiCalendarConfig.calendars.myCalendar.fullCalendar('gotoDate', '01/01/2015'))
+     uiCalendarConfig.calendars.myCalendar.fullCalendar('changeView', 'month');
     };
 
   
@@ -52,6 +55,7 @@
           events:  {
             events: $scope.events
           },
+          defaultView: 'agendaWeek',
           // dayClick: $scope.alertEventOnClick,
           eventDrop: $scope.updateOnDrop,
           eventResize: $scope.resizeDrop
@@ -59,9 +63,7 @@
      }
 
  $scope.changeCalendar = function(id) {
-      console.log('before change calendar', $scope.uiConfig.calendar)
       $scope.uiConfig.calendar.events = null;
-      console.log('after change calendar', $scope.uiConfig.calendar)
 
       ref = new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/calendar');
       
