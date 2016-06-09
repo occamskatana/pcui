@@ -26,7 +26,17 @@
      record.end = event._end.valueOf()
 
      array.$save(record)
+     console.log($scope.uiCalendarConfig.calendar)
 
+    };
+
+    $scope.resizeDrop = function(event, delta, revertFunc) {
+     array = $scope.uiConfig.calendar.events.events
+     record = array.$getRecord(event.$id)
+     record.start = event._start.valueOf()
+     record.end = event._end.valueOf()
+
+     array.$save(record)
     };
 
   
@@ -39,10 +49,12 @@
             center: 'title',
             right: 'today prev,next'
           },
-          events: $scope.events,
+          events:  {
+            events: $scope.events
+          },
           // dayClick: $scope.alertEventOnClick,
           eventDrop: $scope.updateOnDrop,
-          // eventResize: $scope.alertOnResize
+          eventResize: $scope.resizeDrop
         }
      }
 
