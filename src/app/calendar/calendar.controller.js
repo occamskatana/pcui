@@ -20,7 +20,7 @@
 
 
     $scope.updateOnDrop = function(event, delta, revertFunc) {
-     array = $scope.events
+     array = $scope.uiConfig.calendar.events.events
      record = array.$getRecord(event.$id)
      record.start = event._start.valueOf()
      record.end = event._end.valueOf()
