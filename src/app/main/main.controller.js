@@ -12,8 +12,13 @@
     	$scope.userEmail = user.email
     });
 
+
+    $scope.isLoading = true;
+
     ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
     	$scope.residents = response;
+      console.log(response)
+      $scope.isLoading = false;
     });
     
 

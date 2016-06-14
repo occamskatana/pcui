@@ -9,21 +9,21 @@
   </md-input-container>
  <v-accordion class="vAccordion--default">
 
+ <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
+
   <v-pane ng-repeat="resident in residents | filter:searchText" expanded="resident.isExpanded">
     <v-pane-header>
     <div class="residents-container" layout="row">
-      <div flex="25">
+      <div flex="20">
         <p>{{resident.first_name + ' ' + resident.last_name}}</p>
       </div>
-      <div flex="25">
+      <div flex="20">
         <p>Phase: {{resident.phase}}</p>
       </div>
-      <div flex="25">
-        <p> Current Activity: </p>
+      <div flex="60">
+        <p> Last Location: {{resident.location.address}} at {{resident.location.time | date : 'shortTime'}} </p>
       </div>
-      <div flex="25">
-        
-      </div>
+      
     </div>
     
     </v-pane-header>
