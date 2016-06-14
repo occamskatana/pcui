@@ -12,6 +12,10 @@
       text-align: center
     }
 
+    .resident-info {
+      min-height: 100px;
+    }
+    
     md-card {
       color: #01579b;
       text-align: center;
@@ -58,7 +62,7 @@ md-tab-item span {
   min-height: 500px;
 }
 
-.map-container div ng-map {
+.map-container div map {
   height: 500px;
 }
 
