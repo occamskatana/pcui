@@ -15,7 +15,7 @@
 
   <v-pane ng-repeat="resident in residents | filter:searchText" expanded="resident.isExpanded" >
     <v-pane-header ng-click="changeUserMessages(resident.id)">
-    <div class="residents-container" layout="row" ng-click="console.log('sex')">
+    <div class="residents-container" layout="row">
       <div flex="20">
         <p>{{resident.first_name + ' ' + resident.last_name}}</p>
       </div>
@@ -33,12 +33,13 @@
 
     <v-pane-content>
       <div class="resident-info" id="{{resident.id}}" layout="row">
-        <div flex="50">
+        <div flex="25">
           <h3 align="center">Chat</h3>
           <!-- <ng-include src="'app/chat/chat.TMPL.html'"></ng-include> -->
           <div class="chat-container" schroll-bottom="messages">
             <div class="messages" ng-repeat="message in messages">
-              <div class="message" ng-class="{other: message.userId != myId}">
+              <div class="message" ng-class="{other: message.userId == myId}">
+                <p><strong ng-show="message.userId != myId">{{resident.first_name}}</strong></p><br>
                 <span>{{message.text}}</span>
               </div>
             </div>
