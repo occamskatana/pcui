@@ -23,6 +23,11 @@ var Hapi = require('hapi'),
             path: '/templates/{path*}',
             handler: createDirectoryRoute('templates')
         },
+        maps: {
+            method: 'GET'.
+            PATH: 'maps/scripts/{path*}',
+            handler: createDirectoryRoute('maps')
+        },
         spa: {
             method: 'GET',
             path: '/{path*}',
