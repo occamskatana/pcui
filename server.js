@@ -5,27 +5,27 @@ var Hapi = require('hapi'),
     routes = {
         css: {
             method: 'GET',
-            path: './dist/styles/{path*}',
+            path: '/styles/{path*}',
             handler: createDirectoryRoute('styles')
         },
         js: {
             method: 'GET',
-            path: './dist/scripts/{path*}',
+            path: '/scripts/{path*}',
             handler: createDirectoryRoute('scripts')
         },
         assets: {
             method: 'GET',
-            path: './dist/assets/{path*}',
+            path: '/assets/{path*}',
             handler: createDirectoryRoute('assets')
         },
         templates: {
             method: 'GET',
-            path: './dist/templates/{path*}',
+            path: '/templates/{path*}',
             handler: createDirectoryRoute('templates')
         },
         spa: {
             method: 'GET',
-            path: './dist/{path*}',
+            path: '/{path*}',
             handler: {
                 file: path.join(__dirname, '/dist/index.html')
             }
