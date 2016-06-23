@@ -25,7 +25,7 @@ var Hapi = require('hapi'),
         },
         maps: {
             method: 'GET'.
-            PATH: 'maps/scripts/{path*}',
+            path: 'maps/scripts/{path*}',
             handler: createDirectoryRoute('maps')
         },
         spa: {
