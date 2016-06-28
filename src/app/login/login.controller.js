@@ -8,11 +8,12 @@
 	function LoginCtrl($scope, $state, Auth) {
 
 		$scope.user = {}
-
+		$scope.loading = false;
 		$scope.login = function(){
 			Auth.login($scope.user).then(function(user){
 				console.log(user)
 			})
+			$scope.loading = true;
 		}
 
 		$scope.$on('devise:login', function(event, currentUser){

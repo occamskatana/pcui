@@ -2,7 +2,7 @@
   
   <h2>Welcome to the future of TP<small>Please log in here.</small></h2>
   
-  <form class="baller-form">
+  <form class="baller-form" ng-show="!loading">
     
     <div class="baller-group">      
       <input type="text" ng-model="user.email" required>
@@ -17,12 +17,10 @@
       <span class="bar"></span>
       <label>Password</label>
     </div>
-    
+    <md-button class="md-raised md-primary" ng-click="login()">Login</md-button>
   </form>
 
-  <md-button class="md-raised md-primary" ng-click="login()">Login</md-button>
-
-
-
   
+  <md-progress-circular md-mode="indeterminate" ng-show="loading"></md-progress-circular>
 </div>
+
