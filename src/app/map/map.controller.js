@@ -2,14 +2,12 @@
 
 	angular
 		.module('pcui')
-		.controller('MapController', MapController);
+		.controller('MapController', function(NgMap){
+			NgMap.getMap().then(function(map) {
+		    console.log(map.getCenter());
+		    console.log('markers', map.markers);
+		    console.log('shapes', map.shapes);
+		  });
+		});
 
-	function MapController($scope, NgMap, $firebaseObject){
-		
-		NgMap.getMap().then(function(map){
-		
-		})
-
-
-	}
-})()
+})();
