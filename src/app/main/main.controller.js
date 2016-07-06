@@ -36,7 +36,7 @@
     }
 
 
-
+    $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5hEVOsgZkdBXsBdF9t6psC5JuOxK2Agg";
 
   }
 })();

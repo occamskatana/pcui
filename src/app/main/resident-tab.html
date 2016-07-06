@@ -56,7 +56,7 @@
           <h3 align="center">Map</h3>
 
           <div class="resident-map-container">
-            <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}">
               <ng-map center="{{resident.location.latitude}}, {{resident.location.longitude}}" zoom="15">
                 <marker position="[{{resident.location.latitude}}, {{resident.location.longitude}}]"></div>
               </ng-map>
