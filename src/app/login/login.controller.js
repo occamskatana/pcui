@@ -5,7 +5,7 @@
 		.module('pcui')
 		.controller('LoginCtrl',  LoginCtrl)
 
-	function LoginCtrl($scope, $state, $resource, $mdDialog) {
+	function LoginCtrl(Auth, $scope, $state, $resource, $mdDialog, $window) {
 		var showDialog = function(error){
 			$mdDialog.show(
       $mdDialog.alert()
@@ -17,23 +17,29 @@
         .ok('Got it!')
     	);
 		}
+
+		var loginSuccessCallback = function(response){
+			var user = response.data
+			$window.localStorage.userId = user.id;
+			$window.localStorage.email = user.uid;
+			$window.localStorage.name = user.name;
+			$state.go('home')
+		}
+
+		var loginErrorCallback = function(err){
+			var error = err["data"]["errors"][0]
+			showDialog(error);
+			$scope.loading = false
+		}
 		$scope.user = {}
 		$scope.loading = false;
+
 		$scope.login = function(){
-			var SignIn = $resource('https://frozen-reaches-83397.herokuapp.com/users/sign_in.json')
-			var userSession = new SignIn({email: $scope.user.email, password: $scope.user.password});
-			userSession.$save(function(data){
-				console.log(data);
-				window.localStorage.userId = data.id;
-				window.localStorage.userName = data.first_name + ' ' + data.last_name;
-				$scope.user = {};
-				$state.go('home')
-			}, function(err){
-				var error = err["data"]["error"] || err.data.join('. ');
-				showDialog(err);
-				$scope.loading = false;
-			})
 			$scope.loading = true;
+			var UserSession = $resource('http://localhost:3000/api/v1/auth/sign_in.json');
+			var userSession = new UserSession({email: $scope.user.email, password: $scope.user.password});
+			userSession.$save(function(data){loginSuccessCallback(data)}, function(err){loginErrorCallback(err)})
+
 		}
 
 		// $scope.$on('devise:login', function(event, currentUser){
