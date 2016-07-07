@@ -5,7 +5,7 @@
 		.module('pcui')
 		.controller('LoginCtrl',  LoginCtrl)
 
-	function LoginCtrl(Auth, $scope, $state, $resource, $mdDialog, $window) {
+	function LoginCtrl($scope, $state, $resource, $mdDialog, $window) {
 		var showDialog = function(error){
 			$mdDialog.show(
       $mdDialog.alert()

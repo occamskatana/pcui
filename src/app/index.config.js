@@ -16,8 +16,6 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
-
-    AuthProvider.loginPath('https://frozen-reaches-83397.herokuapp.com/users/sign_in.json');
     $httpProvider.defaults.withCredentials = true;
   }
 
