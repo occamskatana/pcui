@@ -20,7 +20,7 @@
 
 		var loginSuccessCallback = function(response){
 			var user = response.data
-			$window.localStorage.userId = user.id;
+			$window.localStorage.id = user.id;
 			$window.localStorage.email = user.uid;
 			$window.localStorage.name = user.name;
 			$state.go('home')
