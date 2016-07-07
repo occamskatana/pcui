@@ -1,6 +1,5 @@
 <md-content class="md-padding" ng-controller="MainController">
-<h1 class="md-display-2">Current Residents</h1>
-<h3 class="md-headline">Welcome, {{userEmail}}</h3>
+<h3 class="md-headline">Welcome, {{userName}}</h3>
   <md-input-container id="search-input-container">
     <input type="text" id="search-input" ng-model="searchText">
     <span class="highlight"></span>
@@ -23,7 +22,7 @@
         <p>Phase: {{resident.phase}}</p>
       </div>
       <div flex="60">
-        <p> Last Location: {{resident.location.address}} at {{resident.location.time | date : 'shortTime'}} </p>
+        <p> </p>
       </div>
       
     </div>

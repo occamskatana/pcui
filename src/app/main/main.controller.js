@@ -6,27 +6,22 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, ResidentService, Auth, $firebaseArray) {
-    
-    Auth.currentUser().then(function(user){
-    	$scope.userEmail = user.email
-    });
-
-
+  function MainController($scope, ResidentService, Auth, $firebaseArray, $window) {
+    $scope.userName = $window.localStorage.name
     $scope.isLoading = true;
 
     ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
     	$scope.residents = response;
-      console.log(response)
       $scope.isLoading = false;
     });
 
     $scope.messages;
     $scope.message = {}
-    $scope.myId = 'John Carter'
+    $scope.myId = $window.localStorage.name;
+
+    
     $scope.changeUserMessages = function(id){
       $scope.messages = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/chat'))
-      console.log($scope.messages)
     }
 
     $scope.sendMessage = function(){
