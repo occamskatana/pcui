@@ -16,18 +16,32 @@
     });
 
     $scope.messages;
+    $scope.tasks;
     $scope.message = {}
     $scope.myId = $window.localStorage.name;
 
     
-    $scope.changeUserMessages = function(id){
+    $scope.changeUser = function(id){
       $scope.messages = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/chat'))
+      $scope.tasks = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/tasks'))
+      console.log($scope.tasks)
     }
 
     $scope.sendMessage = function(){
       var d = Date.now()
       $scope.messages.$add({text: $scope.message.text, userId: $scope.myId, time: d })
       $scope.message.text = ''
+    }
+
+    $scope.toggleTask = function(task){
+      if(task.complete == false){
+        task.complete = true;
+      } else {
+        task.complete = false
+      }
+       $scope.tasks.$save(task).then(function(ref){
+        console.log(ref)
+        })
     }
 
 

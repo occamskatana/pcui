@@ -66,3 +66,17 @@ md-tab-item span {
   height: 500px;
 }
 
+.task-incomplete {
+  font-size: 55px;
+  color: red;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+
+.task-complete {
+  font-size: 55px;
+  color: #32cd32;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
