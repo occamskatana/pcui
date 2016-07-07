@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, ResidentService, Auth, $firebaseArray, $window) {
+  function MainController($scope, ResidentService, $firebaseArray, $window) {
     $scope.userName = $window.localStorage.name
     $scope.isLoading = true;
 
