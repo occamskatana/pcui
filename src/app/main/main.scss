@@ -66,6 +66,19 @@ md-tab-item span {
   height: 500px;
 }
 
+.tasks-container md-list {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+
+  .singular-task {
+    width: 100%;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+  }
+}
+
 .task-incomplete {
   font-size: 55px;
   color: red;
@@ -149,6 +162,7 @@ md-select {
     z-index: 2;
     color: white;
   }
+  
 }
 [md-ink-ripple] {
   position: relative;

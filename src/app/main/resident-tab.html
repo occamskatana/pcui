@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div flex="50">
+        <div flex="30">
           <!-- <h3 align="center">Map</h3>
 
           <div class="resident-map-container">
@@ -71,14 +71,15 @@
           </div> -->
 
           <h3 align="center">Tasks</h3>
-
-          <md-list flex class="tasks-container">
-            <md-list-item class="md-1-line" ng-repeat="task in tasks" ng-click="toggleTask(task)">
-              <i class="icon ion-close-circled md-avatar task-incomplete" ng-show="task.complete == false"></i>
-              <i class="icon ion-checkmark-circled md-avatar task-complete" ng-show="task.complete == true"></i>
-              <h4>{{task.name}}</h4>
-            </md-list-item>
-          </md-list flex>
+          <div class="tasks-container">
+            <md-list flex>
+              <md-list-item class="md-1-line singular-task" ng-repeat="task in tasks" ng-click="toggleTask(task)">
+                <i class="icon ion-close-circled md-avatar task-incomplete" ng-show="task.complete == false"></i>
+                <i class="icon ion-checkmark-circled md-avatar task-complete" ng-show="task.complete == true"></i>
+                <h4>{{task.name}}</h4>
+              </md-list-item>
+            </md-list>
+          </div>
 
         </div>
       </div>
