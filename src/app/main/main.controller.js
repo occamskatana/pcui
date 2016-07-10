@@ -9,18 +9,18 @@
   function MainController($scope, ResidentService, $firebaseArray, $window) {
     $scope.userName = $window.localStorage.name
     $scope.isLoading = true;
-
-    ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
-    	$scope.residents = response;
-      $scope.isLoading = false;
-    });
-
     $scope.messages;
     $scope.tasks;
     $scope.message = {}
     $scope.myId = $window.localStorage.name;
-
-    
+    $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5hEVOsgZkdBXsBdF9t6psC5JuOxK2Agg";
+    $scope.houseList = ["1212 Quinnipiac Ave", "22 Linden", "980 Townsend Avenue", "The Cove"]
+    $scope.house;
+    ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
+    	$scope.residents = response;
+      $scope.isLoading = false;
+    });
+   
     $scope.changeUser = function(id){
       $scope.messages = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/chat'))
       $scope.tasks = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/tasks'))
@@ -44,8 +44,21 @@
         })
     }
 
+     $scope.getSelectedText = function() {
+        if ($scope.houseFilter !== undefined) {
+          return $scope.houseFilter;
+        } else {
+          return "Filter by house";
+        }
+      };
 
-    $scope.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5hEVOsgZkdBXsBdF9t6psC5JuOxK2Agg";
+      $scope.clearFilter = function(){
+        $scope.houseFilter = '';
+      }
+
+   
+
+    
 
   }
 })();

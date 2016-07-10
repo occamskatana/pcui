@@ -16,7 +16,7 @@
         .ariaLabel('Alert Dialog Demo')
         .ok('Got it!')
     	);
-		}
+	}
 
 		var loginSuccessCallback = function(response){
 			var user = response.data
@@ -36,7 +36,7 @@
 
 		$scope.login = function(){
 			$scope.loading = true;
-			var UserSession = $resource('https://frozen-reaches-83397.herokuapp.com/api/v1/auth/sign_in.json');
+			var UserSession = $resource('http://localhost:3000/api/v1/auth/sign_in.json');
 			var userSession = new UserSession({email: $scope.user.email, password: $scope.user.password});
 			userSession.$save(function(data){loginSuccessCallback(data)}, function(err){loginErrorCallback(err)})
 

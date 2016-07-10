@@ -4,7 +4,17 @@
     <input type="text" id="search-input" ng-model="searchText">
     <span class="highlight"></span>
     <span class="bar"></span>
-    <label>Search by Name</label>
+    <label>Search by any Field</label>
+  </md-input-container>
+
+  <md-input-container>
+    <label class="rawr">House Filter</label>
+    <md-select ng-model="houseFilter" md-selected-text="getSelectedText()" md-container-class="houses-container">
+      <md-optgroup label="Houses">
+        <md-option ng-value="clear" ng-click="clearFilter()">Clear Filter</md-option>
+        <md-option ng-value="house" ng-repeat="house in houseList">{{house}}</md-option>
+      </md-optgroup>
+    </md-select>
   </md-input-container>
 
 
@@ -12,21 +22,19 @@
 
  <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
 
-  <v-pane ng-repeat="resident in residents | filter:searchText" expanded="resident.isExpanded" >
+  <v-pane ng-repeat="resident in residents | filter:searchText | filter:houseFilter" expanded="resident.isExpanded" >
     <v-pane-header ng-click="changeUser(resident.id)">
-    <div class="residents-container" layout="row">
-      <div flex="20">
-        <p>{{resident.first_name + ' ' + resident.last_name}}</p>
+      <div class="residents-container" layout="row">
+        <div flex="20">
+          <p>{{resident.first_name + ' ' + resident.last_name}}</p>
+        </div>
+        <div flex="20">
+          <p>Phase: {{resident.phase}}</p>
+        </div>
+        <div flex="60">
+          <p>House: {{resident.house_address}}</p>
+        </div>
       </div>
-      <div flex="20">
-        <p>Phase: {{resident.phase}}</p>
-      </div>
-      <div flex="60">
-        <p>House: {{resident.house_address}}</p>
-      </div>
-      
-    </div>
-    
     </v-pane-header>
       
 
