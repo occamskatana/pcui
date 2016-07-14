@@ -29,7 +29,7 @@
 
     $scope.sendMessage = function(){
       var d = Date.now()
-      $scope.messages.$add({text: $scope.message.text, userId: $scope.myId, time: d })
+      $scope.messages.$add({text: $scope.message.text, userId: $scope.myId, time: d, seen: false })
       $scope.message.text = ''
     }
 
@@ -56,6 +56,8 @@
         $scope.houseFilter = '';
       }
 
+      
+
    
 
     
@@ -75,6 +77,7 @@
           scope.$watchCollection('schrollBottom', function (newValue) {
             if (newValue)
             {
+              console.log(newValue)
               $(element).scrollTop($(element)[0].scrollHeight);
             }
           });

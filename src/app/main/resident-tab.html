@@ -48,6 +48,7 @@
               <div class="message" ng-class="{other: message.userId == myId}">
                 <p><strong ng-show="message.userId != myId">{{resident.first_name}}</strong></p><br>
                 <span>{{message.text}}</span>
+                <p>Message Seen{{message.seen}}</p>
               </div>
             </div>
             <div layout="row" layout-align="center end">
