@@ -74,7 +74,7 @@
           <h3 align="center">Tasks</h3>
           <div class="tasks-container">
             <md-list flex>
-              <md-list-item class="md-1-line singular-task" ng-repeat="task in tasks" ng-click="toggleTask(task)">
+              <md-list-item class="md-1-line singular-task" ng-repeat="task in tasks" ng-click="showListBottomSheet(task)">
                 <i class="icon ion-close-circled md-avatar task-incomplete" ng-show="task.complete == false"></i>
                 <i class="icon ion-checkmark-circled md-avatar task-complete" ng-show="task.complete == true"></i>
                 <h4>{{task.name}}</h4>

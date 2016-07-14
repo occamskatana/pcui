@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, ResidentService, $firebaseArray, $window) {
+  function MainController($scope, ResidentService, $firebaseArray, $window, $mdBottomSheet) {
     $scope.userName = $window.localStorage.name
     $scope.isLoading = true;
     $scope.messages;
@@ -56,14 +56,45 @@
         $scope.houseFilter = '';
       }
 
-      
+           
+      $scope.showListBottomSheet = function(task) {
+          $scope.task = task
+          $mdBottomSheet.show({
+            templateUrl: '/app/main/template.html',
+            controller: 'BottomSheetController',
+            locals: {task: $scope.task}
+          }).then(function(clickedItem) {
+            //$scope.alert = clickedItem.name + ' clicked!';
+          });
+       };
+      }
+  
+})();
 
-   
 
-    
+(function(){
+  angular
+    .module('pcui')
+    .controller('BottomSheetController', BottomSheetController)
 
+
+  function BottomSheetController(task, $scope){
+    $scope.task = task
+    console.log(task)
+
+    $scope.toggleTask = function(task){
+      if(task.complete == false){
+        task.complete = true;
+      } else {
+        task.complete = false
+      }
+       $scope.tasks.$save(task).then(function(ref){
+        console.log(ref)
+        })
+    }
   }
 })();
+
 
 (function(){
   angular
@@ -77,7 +108,6 @@
           scope.$watchCollection('schrollBottom', function (newValue) {
             if (newValue)
             {
-              console.log(newValue)
               $(element).scrollTop($(element)[0].scrollHeight);
             }
           });
@@ -85,3 +115,4 @@
       }
     })
 })();
+
