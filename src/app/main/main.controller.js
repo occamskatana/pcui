@@ -18,8 +18,11 @@
     $scope.house;
     ResidentService.query({user_id: window.localStorage.id}).$promise.then(function(response){
     	$scope.residents = response;
+      console.log(response)
       $scope.isLoading = false;
     });
+
+
    
     $scope.changeUser = function(id){
       $scope.messages = $firebaseArray(new Firebase('https://evolutiontech.firebaseio.com/residents/' + id + '/chat'))
