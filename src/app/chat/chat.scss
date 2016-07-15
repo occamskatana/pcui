@@ -1,83 +1,23 @@
 .chat-container {
 	height: 100%;
   width: 100%;
-	background-color: lightblue;
+	background-color: white;
 	margin-right: 20px;
 	overflow: scroll;
   max-height: 550px;
   overflow-x: hidden;
- 
+  color: black;
 }
 
-.messages {
-  display: -webkit-box !important;
-  display: -moz-box !important;
-  display: -ms-flexbox !important;
-  display: -webkit-flex !important;
-  display: flex !important;
-  -webkit-align-content: center !important;
-  -ms-flex-line-pack: center !important;
-  align-content: center !important;
-  -webkit-box-align: center !important;
-  -moz-box-align: center !important;
-  -webkit-align-items: center !important;
-  -ms-flex-align: center !important;
-  align-items: center !important;
-  margin-bottom: 20px !important;
-  .message {
-    -webkit-box-flex: 1 !important;
-    -moz-box-flex: 1 !important;
-    -webkit-flex: 1 1 auto !important;
-    -ms-flex: 1 1 auto !important;
-    flex: 1 1 auto !important;
-    padding: 10px !important;
-    -webkit-transition: all 250ms ease-in-out !important;
-    transition: all 250ms ease-in-out !important;
-    overflow: hidden !important;
-    text-align: left !important;
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    -moz-transform: translate3d(0, 0, 0) !important;
-    transform: translate3d(0, 0, 0) !important;
-    span {
-      background: #FF3B30 !important;
-      display: inline-block !important;
-      color: white !important;
-      padding: 10px !important;
-      border-radius: 10px !important;
-      text-align: left !important;
-      max-width: 240px !important;
-    }
-  }
+.message {
+  text-align: right;
 }
 
-  .message.other {
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    -moz-transform: translate3d(0, 0, 0) !important;
-    transform: translate3d(0, 0, 0) !important;
-    text-align: right !important;
-
-    span {
-      background: #007AFF !important;
-      display: inline-block !important;
-      color: white !important;
-      padding: 10px !important;
-      border-radius: 10px !important;
-      text-align: left !important;
-      max-width: 240px !important;
-    }
-  }
-
-.item-input-wrapper {
-	width: 100%;
-	position: relative;
-	display: inline-block;
+.other {
+  text-align: left;
 }
 
-.messages p {
-	color: black;
-	font-size: 12px;
+.other .md-avatar {
+  align-self: right;
 }
 
-.message span {
-	font-size: 15px;
-}

@@ -42,15 +42,17 @@
       <div class="resident-info" id="{{resident.id}}" layout="row">
         <div flex="35">
           <h3 align="center">Chat</h3>
-          <!-- <ng-include src="'app/chat/chat.TMPL.html'"></ng-include> -->
           <div class="chat-container" schroll-bottom="messages">
-            <div class="messages" ng-repeat="message in messages">
-              <div class="message" ng-class="{other: message.userId == myId}">
-                <p><strong ng-show="message.userId != myId">{{resident.first_name}}</strong></p><br>
-                <span>{{message.text}}</span>
-                <p>Message Seen{{message.seen}}</p>
-              </div>
-            </div>
+            <md-list class="md-dense" flex>
+              <md-list-item class="message md-2-line" ng-repeat="message in messages" ng-class="{other: message.userId != myId}">
+               <!--  <img ng-src="http://lorempixel.com/400/200" class="md-avatar">  -->
+                <div class="md-list-item-text">
+                  <p>{{message.userId}}</p>
+                  <h3p>{{message.text}}</h3>
+                </div>
+              </md-list-item>
+            </md-list>
+            
             <div layout="row" layout-align="center end">
               <md-input-container class="item-input-wrapper">
                 <input type="text" placeholder="Type your message" ng-keyup="$event.keyCode == 13 && sendMessage()" ng-model="message.text"/>
