@@ -33,16 +33,16 @@
       $scope.message.text = ''
     }
 
-    $scope.toggleTask = function(task){
-      if(task.complete == false){
-        task.complete = true;
-      } else {
-        task.complete = false
-      }
-       $scope.tasks.$save(task).then(function(ref){
-        console.log(ref)
-        })
-    }
+    // $scope.toggleTask = function(task){
+    //   if(task.complete == false){
+    //     task.complete = true;
+    //   } else {
+    //     task.complete = false
+    //   }
+    //    $scope.tasks.$save(task).then(function(ref){
+    //     console.log(ref)
+    //     })
+    // }
 
      $scope.getSelectedText = function() {
         if ($scope.houseFilter !== undefined) {
@@ -57,12 +57,13 @@
       }
 
            
-      $scope.showListBottomSheet = function(task) {
+      $scope.showListBottomSheet = function(task, $event) {
           $scope.task = task
           $mdBottomSheet.show({
             templateUrl: '/app/main/template.html',
             controller: 'BottomSheetController',
-            locals: {task: $scope.task}
+            locals: {task: $scope.task,
+                    tasks: $scope.tasks}
           }).then(function(clickedItem) {
             //$scope.alert = clickedItem.name + ' clicked!';
           });
@@ -78,8 +79,9 @@
     .controller('BottomSheetController', BottomSheetController)
 
 
-  function BottomSheetController(task, $scope){
+  function BottomSheetController(task, $scope, tasks){
     $scope.task = task
+    $scope.tasks = tasks
     console.log(task)
 
     $scope.toggleTask = function(task){
