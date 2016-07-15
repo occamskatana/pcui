@@ -63,9 +63,10 @@
             templateUrl: '/app/main/template.html',
             controller: 'BottomSheetController',
             locals: {task: $scope.task,
-                    tasks: $scope.tasks}
+                    tasks: $scope.tasks,
+                    messages: $scope.messages}
           }).then(function(clickedItem) {
-            //$scope.alert = clickedItem.name + ' clicked!';
+           console.log(clickedItem)
           });
        };
       }
@@ -79,10 +80,11 @@
     .controller('BottomSheetController', BottomSheetController)
 
 
-  function BottomSheetController(task, $scope, tasks){
+  function BottomSheetController(task, $scope, tasks, messages, $mdBottomSheet){
     $scope.task = task
     $scope.tasks = tasks
-    console.log(task)
+    $scope.messages = messages;
+    console.log(messages, task, tasks)
 
     $scope.toggleTask = function(task){
       if(task.complete == false){
@@ -91,8 +93,14 @@
         task.complete = false
       }
        $scope.tasks.$save(task).then(function(ref){
-        console.log(ref)
+        
         })
+       $mdBottomSheet.hide()
+    }
+
+    $scope.sendReminder = function(task){
+      $scope.messages.$add({text: "You need to" + ' ' + task.name, time: Date.now(), userId: window.localStorage.name})
+      $mdBottomSheet.hide()
     }
   }
 })();
