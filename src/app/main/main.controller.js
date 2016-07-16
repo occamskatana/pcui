@@ -63,7 +63,22 @@
       $scope.showListBottomSheet = function(task, $event) {
           $scope.task = task
           $mdBottomSheet.show({
-            templateUrl: '/app/main/template.html',
+            template: '<md-bottom-sheet class="md-list">'
+                        +'<md-subheader>Manage Task</md-subheader>'
+                         +'<md-list>'
+                          +'<md-list-item>'
+                           + '<md-button class="md-raised md-primary" ng-click="toggleTask(task)" ng-show="task.complete == false">'
+                             + '<span class="md-inline-list-icon-label">Mark Task Complete</span>'
+                           + '</md-button>'
+                            + '<md-button class="md-raised md-warn" ng-click="toggleTask(task)" ng-show="task.complete">'
+                             +'<span>Mark Task Incomplete</span>'
+                            +'</md-button>'
+                            +'<md-button class="md-raised reminder-button" ng-click="sendReminder(task)">'
+                             + '<span>Send Reminder About This Task</span>'
+                           + '</md-button>'
+                          +'</md-list-item>'
+                        +'</md-list>'
+                      + '</md-bottom-sheet>',
             controller: 'BottomSheetController',
             locals: {task: $scope.task,
                     tasks: $scope.tasks,
