@@ -61,6 +61,7 @@
 
            
       $scope.showListBottomSheet = function(task, $event) {
+          console.log($event)
           $scope.task = task
           $mdBottomSheet.show({
             template: '<md-bottom-sheet class="md-list">'

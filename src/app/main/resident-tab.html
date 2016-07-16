@@ -21,8 +21,9 @@
  <v-accordion class="vAccordion--default" onexpand="console.log(index, id)">
 
  <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
-
+ 
   <v-pane ng-repeat="resident in residents | filter:searchText | filter:houseFilter" expanded="resident.isExpanded" >
+ 
     <v-pane-header ng-click="changeUser(resident.id)">
       <div class="residents-container" layout="row">
         <div flex="20">
