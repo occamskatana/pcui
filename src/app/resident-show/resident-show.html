@@ -1,20 +1,32 @@
 <md-content>
-<h3 class="md-display-2">{{residentInfo.first_name + ' ' + residentInfo.last_name}}</h3>
-	<div layout="row">
-		<div flex class="resident-information">
-			<div class="resident-info-container">
-				<h3>
-					Resident ID: {{residentInfo.id}}<br>
-					 
-					Phone: {{residentInfo.phone}}<br>
-					Phase: {{residentInfo.phase}}<br>
-					Sober Date: {{residentInfo.sober_date}}<br>
-					House Address: {{residentInfo.house_address}}<br>
-				</h3>
+	<div class="resident-show-container">
+		<h3 class="md-display-2">{{residentInfo.first_name + ' ' + residentInfo.last_name}}</h3>
+		<div layout="row">
+			<div flex class="resident-information">
+				<div class="resident-info-container">
+					<h3>
+						Resident ID: {{residentInfo.id}}<br>
+						Phone: {{residentInfo.phone_number}}<br>
+						Phase: {{residentInfo.phase}}<br>
+						Sober Date: {{residentInfo.sober_date | date:long}}<br>
+						House Address: {{residentInfo.house_address}}<br>
+					</h3>
+				</div>
+
+				<md-list class="resident-tasks">
+					<md-list-item ng-repeat="task in tasks" class="todo-container" ng-click="toggleTaskComplete(task)">
+						<i class="icon ion-close-circled md-avatar task-incomplete" ng-show="task.complete == false"></i>
+	          <i class="icon ion-checkmark-circled md-avatar task-complete" ng-show="task.complete == true"></i>
+	          <h4>{{task.name}}</h4>
+
+
+	          <md-button class="md-secondary md-raised">Send Reminder</md-button>
+					</md-list-item>
+				</md-list>
+			</div>
+			<div flex class="resident-picture">
+				<img class="resident-photo" ng-src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
 			</div>
 		</div>
-		<div flex class="resident-picture">
-
-		</div>
-	</div>
+</div>
 </md-content>

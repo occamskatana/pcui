@@ -25,7 +25,8 @@
   <v-pane ng-repeat="resident in residents | filter:searchText | filter:houseFilter" expanded="resident.isExpanded" >
  
     <v-pane-header ng-click="changeUser(resident.id)">
-      <div class="residents-container" layout="row">
+      <md-list-item class="residents-container" layout="row">
+        <img class="md-avatar main-avatar" ng-src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">
         <div flex="20">
           <p>{{resident.first_name + ' ' + resident.last_name}}</p>
         </div>
@@ -35,7 +36,7 @@
         <div flex="60">
           <p>House: {{resident.house_address}}</p>
         </div>
-      </div>
+      </md-list-item >
     </v-pane-header>
       
 
