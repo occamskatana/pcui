@@ -9,32 +9,32 @@ md-bottom-sheet {
 
 
 
-    md-content {
-      background-color: #01579b;
-      color: white;
-      font-weight: 400;
-      height:100%;
-      padding:20px;
-      margin-top: 5%;
-      margin-bottom: 5%;
-      margin-left: 3%;
-      margin-right: 3%;
-      min-height: 400px;
-      text-align: center
-    }
+md-content {
+  background-color: #01579b;
+  color: white;
+  font-weight: 400;
+  height:100%;
+  padding:20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 3%;
+  margin-right: 3%;
+  min-height: 400px;
+  text-align: center
+}
 
-    .resident-info {
-      min-height: 100px;
-    }
-    
-    md-card {
-      color: #01579b;
-      text-align: center;
-    }
+.resident-info {
+  min-height: 100px;
+}
 
-    md-dialog-content{
-      color: black;
-    }
+md-card {
+  color: #01579b;
+  text-align: center;
+}
+
+md-dialog-content{
+  color: black;
+}
 
 
 md-tab-item span {
