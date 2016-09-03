@@ -1,21 +1,18 @@
 .resident-information {
 	text-align: left;
 	font-size: 1.1rem;
+	margin-right: 5px;
 }
 
 .resident-photo {
 	background: white;
 	max-width: 100%;
-
+	margin-left: 5px;
+	top: 25px;
 }
 
-.resident-tasks {
-	background-color: white;
-	min-height: 50%;
-	margin-right: 15px;
-}
 
-.todo-container {
-	color: black;
+.resident-info-container {
+	padding-left: 3px;
 }
 

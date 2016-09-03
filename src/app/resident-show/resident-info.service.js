@@ -7,7 +7,7 @@
 			var services = {};
 
 			services.getResidentInfo = function(id){
-				return $http.get('http://localhost:3000/api/v1/residents/' + id)
+				return $http.get('https://frozen-reaches-83397.herokuapp.com//api/v1/residents/' + id)
 			}
 
 			return services

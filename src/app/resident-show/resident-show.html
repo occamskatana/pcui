@@ -12,17 +12,13 @@
 						House Address: {{residentInfo.house_address}}<br>
 					</h3>
 				</div>
-
-				<md-list class="resident-tasks">
-					<md-list-item ng-repeat="task in tasks" class="todo-container" ng-click="toggleTaskComplete(task)">
-						<i class="icon ion-close-circled md-avatar task-incomplete" ng-show="task.complete == false"></i>
-	          <i class="icon ion-checkmark-circled md-avatar task-complete" ng-show="task.complete == true"></i>
-	          <h4>{{task.name}}</h4>
-
-
-	          <md-button class="md-secondary md-raised">Send Reminder</md-button>
-					</md-list-item>
-				</md-list>
+				<div class="map-container">	
+				<h3 class="md-display-1">Current Location</h3>
+					<ng-map center="{{currentLocation.latitude}},{{currentLocation.longitude}}">
+						<marker position="{{currentLocation.latitude}},{{currentLocation.longitude}}">
+					</ng-map>
+				</div>
+				
 			</div>
 			<div flex class="resident-picture">
 				<img class="resident-photo" ng-src="http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png">

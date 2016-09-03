@@ -3,25 +3,18 @@
 		.module('pcui')
 		.controller('ResidentController', ResidentController)
 
-		function ResidentController($scope, $stateParams, ResidentInfoService, $firebaseArray){
+		function ResidentController($scope, $stateParams, ResidentInfoService, $firebaseObject){
 			$scope.residentInfo;
-			var ref = new Firebase('https://evolutiontech.firebaseio.com/residents/' +  $stateParams.id +'/tasks')
+			$scope.currentLocation = $firebaseObject(new Firebase('https://evolutiontech.firebaseio.com/residents/' + $stateParams.id + '/current_location'));
+			
+			
+			
 
-			$scope.tasks = $firebaseArray(ref);
 
 			ResidentInfoService.getResidentInfo($stateParams.id).then(function(response){
 				$scope.residentInfo = response.data
 			});
 
-			$scope.toggleTaskComplete = function(task){
-				if (task.complete == false){
-					task.complete = true;
-				} else {
-					task.complete = false;
-				}
-
-				$scope.tasks.$save(task);
-			}
 
 
 
